@@ -1,4 +1,4 @@
 # Rock-Paper-Scissors
-Live Preview: /
+Live Preview: \
 https://mohamedaemara.github.io/Rock-Paper-Scissors/
 
