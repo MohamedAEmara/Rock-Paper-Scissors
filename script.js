@@ -1,7 +1,12 @@
+const btn1 = document.querySelector('.rock');
+const btn2 = document.querySelector('.paper');
+const btn3 = document.querySelector('.scissors');
+
+
 function getComputerChoice()
 {
     let randomChoice = Math.floor((Math.random()*3)%3) + 1;
-    alert(randomChoice);
+
     if(randomChoice === 1)
         return 'Rock';
     else if(randomChoice === 2)
@@ -10,70 +15,150 @@ function getComputerChoice()
         return 'Scissors';
 }
 
+
+
 function playRound(playerSelection, computerSelection){
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
+    
+    // display the computer choice on screen.
+    const computerChoice = document.querySelector('.computer-choice-current');
+    computerChoice.innerHTML = computerSelection;
+
     if(playerSelection === computerSelection){
-        console.log('Draw');
-        return 'Draw, Try again :(';
+        return 0;
     }
     if(playerSelection == 'rock' && computerSelection == 'scissors'){
-        console.log('Won');
-        return 'You Won! Rock beats Scissors';
+        return 1;
     }
     if(playerSelection == 'paper' && computerSelection == 'rock'){
-        console.log('Won')
-        return 'You Won! Paper beats Rock';
+        return 1;
     }
     if(playerSelection == 'scissors' && computerSelection == 'paper'){
-        console.log('Won');
-        return 'You Won! Scissors beats Paper';
+        return 1;
     }
     if(playerSelection == 'rock' && computerSelection == 'paper'){
-        console.log('Lose');
-        return 'You Lose! Paper beats Rock';
+        return -1;
     }
     if(playerSelection == 'paper' && computerSelection == 'scissors'){
-        console.log('Lose');
-        return 'You Lose! Scissors beats Paper';
+        return -1;
     }
     if(playerSelection == 'scissors' && computerSelection == 'rock'){
-        console.log('Lose');
-        return 'You Lose! Rock beats scissors';
+        return -1;
     }
     
 }
 
-function game(){
-    let computerWins = 0;
-    let playerWins = 0;
-    for(let i=0; i<5; i++){
-        const playerChoice = prompt('Choose: Rock, Paper, or Scissors');
-        const computerChoice = getComputerChoice();
-        console.log('computer choice: ' + computerChoice);
-        console.log('player choice: ' + playerChoice);
-        console.log('---------------------------');
-        let result = playRound(playerChoice, computerChoice);
-        if(result.includes('Win'))
-            playerWins ++;
-        else if(result.includes('Lose'))
-            computerWins ++;
-    }
-    if(playerWins > computerWins)
-        alert('Congrats, You won.');
-    else if(playerWins < computerWins)
-        alert('You lose :(');
-    else 
-        alert('Draw, please play again!');
+
+
+function playerSelection(pChoice){
+    const computerChoice = getComputerChoice();
+    let res = playRound(pChoice, computerChoice);
+    return res;
+
 }
 
+
+function decision(computer, user){
+        if(computer == 5)
+        {
+            alert('Computer won :(');
+            const e = document.querySelector('.computer');
+            e.style.backgroundColor = 'red';
+            btn1.disabled = true;
+            btn2.disabled = true;
+            btn3.disabled = true;
+        }
+        if(user == 5)
+        {
+            alert('You Won :)');
+            const e = document.querySelector('.user');
+            e.style.backgroundColor = 'red';
+            btn1.disabled = true;
+            btn2.disabled = true;
+            btn3.disabled = true;
+        }
+}
+
+function game(){
+
+    let computerWins = 0;
+    let playerWins = 0;   
+        
+    if(computerWins < 5 && playerWins < 5)
+    {
+        btn1.addEventListener('click', () => {
+    
+            res = playerSelection('rock');
+    
+            if(res == 1){
+                playerWins ++;
+                console.log('1');
+            }
+            else if(res == -1){
+                computerWins ++;
+                console.log('-1');
+            }
+    
+            const computerPoints = document.querySelector('.computer-points');
+            computerPoints.innerHTML = computerWins;
+            const usertPoints = document.querySelector('.user-points');
+            usertPoints.innerHTML = playerWins;
+    
+
+            decision(computerWins, playerWins);
+            
+        })
+    
+        btn2.addEventListener('click', () => {
+            res = playerSelection('paper');
+            console.log('Paper');
+            playerChoice = 'paper';
+            if(res == 1){
+                playerWins ++;
+                console.log('1');
+            }
+            else if(res == -1){
+                computerWins ++;
+                console.log('-1');
+            }
+    
+            const computerPoints = document.querySelector('.computer-points');
+            computerPoints.innerHTML = computerWins;
+            const usertPoints = document.querySelector('.user-points');
+            usertPoints.innerHTML = playerWins;
+
+            decision(computerWins, playerWins);
+
+    
+        })
+    
+        btn3.addEventListener('click', () => {
+            res = playerSelection('scissors');
+            console.log('scissors');
+            playerChoice = 'scissors';
+            if(res == 1){
+                playerWins ++;
+                console.log('1');
+            }
+            else if(res == -1){
+                computerWins ++;
+                console.log('-1');
+            }
+    
+            const computerPoints = document.querySelector('.computer-points');
+            computerPoints.innerHTML = computerWins;
+            const usertPoints = document.querySelector('.user-points');
+            usertPoints.innerHTML = playerWins;
+
+            decision(computerWins, playerWins);
+
+    
+        })
+                 
+    }
+}
+
+
+// call the game function.
 game();
-
-// const playerSelection = "rock";
-// const computerSelection = getComputerChoice();
-// console.log(playRound(playerSelection, computerSelection));
-
-// console.log(getComputerChoice());
-// console.log(getComputerChoice());
-// console.log(getComputerChoice());
-// console.log(getComputerChoice());

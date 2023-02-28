@@ -1,0 +1,89 @@
+.buttons > button {
+    width: 200px;
+    height: 100px;
+    /* min-width: 300px;
+    min-height: 150px; */
+    
+}   
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    /* align-items: center; */
+    /* margin-top: 70%;
+    margin-bottom: 50%; */
+
+}
+
+
+button {
+    border-radius: 2em;
+    box-shadow: 5px 5px 5px 5px gray;
+    font-size: 30px;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.computer-icon, .user-icon{
+    width: 100px;
+    height: 100px;
+}
+
+.computer-points, .user-points {
+    font-size: 60px;
+    
+}
+
+.computer, .user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: rgb(170, 170, 170);
+    padding: 10px;
+    border-radius: 2em;
+}
+
+.score {
+    display: flex;
+    justify-content: space-around;
+    /* padding-left: 60px;
+    padding-right: 60px; */
+    /* gap:20px; */
+}
+
+body {
+    margin-top: 30%;
+    margin-bottom: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 200px;
+    background-color: aliceblue;
+}
+
+
+.computer-choice {
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px;
+    gap: 50px;
+}
+
+.computer-choice-text {
+    font-size: 35px;
+    color: brown;
+    background-color: burlywood;
+    padding: 10px;
+    border-radius: 2em;
+    font-weight: 700;
+
+}
+
+
+.computer-choice-current {
+    font-size: 50px;
+    background-color: burlywood;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 2em;
+    padding: 10px;
+}
